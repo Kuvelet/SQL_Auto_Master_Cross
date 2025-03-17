@@ -36,13 +36,13 @@ The provided dataset consists of three primary columns: `CrossName`, `CrossingNu
 
 ### Transformation
 
-Take a glimpse at the raw data snapshot.
+Here's a snapshot of the raw data. I plan to restructure it by creating columns for each unique CrossName and generating rows for every possible combination of values from the dataset.
 
 | CompanyPart# | CrossName         | CrossingNumber |
 |-------------|------------------|----------------|
 | PartID_1    | OEMcond          | 1a399853c      |
 | PartID_1    | OEMcond          | e75eff849      |
-| PartID_1    | CrossbrandType_11 | 399084d8f      |
+| PartID_1    | MOOG | 399084d8f      |
 | PartID_1    | OEMcond          | 1a379cd37      |
 | PartID_1    | OEMcond          | 4a63622c3      |
 | PartID_1    | OEMcond          | 1a399853c      |
@@ -53,7 +53,7 @@ Take a glimpse at the raw data snapshot.
 | PartID_1    | OEMcond          | 73b32d5a8      |
 | PartID_2    | OEMcond          | 4a9efa64f      |
 | PartID_2    | CrossbrandType_2  | 313b64e58      |
-| PartID_2    | CrossbrandType_11 | 21ea446a4      |
+| PartID_2    | MOOG | 21ea446a4      |
 | PartID_2    | OEMcond          | 9535ddf65      |
 | PartID_2    | OEMcond          | aad951cac      |
 | PartID_2    | OEMcond          | 4a9efa64f      |
