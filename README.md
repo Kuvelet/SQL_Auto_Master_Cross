@@ -56,6 +56,7 @@ Here’s an overview of the raw dataset.
 | PartID_3    | MOOG | 189942055      |
 | PartID_3    | Mevotech | 011f238fe      |
 
+> **Note:** This table is a representative sample and does not include all records from the actual dataset. Data have been modified for confidentiality.
 
 My plan is to restructure this data by creating dedicated columns for each unique **CrossName**, ensuring a more organized and accessible format. For each row, I will generate all possible combinations of values derived from the dataset. 
 
@@ -76,7 +77,7 @@ Below is the sample output wanted using the given sample data
 | PartID_3     | 189942055         | 011f238fe               | 6e50b8a21        | fc6a76133        | 40236b986                                    |
 | PartID_3     | 189942055         | 011f238fe               | 6e50b8a21        | fc6a76133        | 40236b986                                    |
 
-
+> **Note:** This table is a representative sample and does not include all records from the actual dataset. Data have been modified for confidentiality.
 
 
 
