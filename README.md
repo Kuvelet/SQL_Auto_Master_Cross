@@ -38,23 +38,50 @@ The provided dataset consists of three primary columns: `CrossName`, `CrossingNu
 
 Here’s an overview of the raw dataset.
 
-| CompanyPart# | CrossName         | CrossingNumber |
-|-------------|------------------|----------------|
-| PartID_1    | OEMcond          | 1a399853c      |
-| PartID_1    | OEMcond          | e75eff849      |
-| PartID_1    | OEMcond          | 1a379cd37      |
-| PartID_1    | MOOG | 399084d8f      |
-| PartID_1    | Mevotech | e7ffc5be7      |
-| PartID_2    | OEMcond          | 4a9efa64f      |
-| PartID_2    | MOOG | 21ea446a4      |
-| PartID_2    | Mevotech | c04c54e6a      |
-| PartID_3    | OEMcond          | 40236b986      |
-| PartID_3    | OEMcond          | f4f124f70      |
-| PartID_3    | OEMcond          | 40236b986      |
-| PartID_3    | MAS  | fc6a76133      |
-| PartID_3    | Dorman  | 6e50b8a21      |
-| PartID_3    | MOOG | 189942055      |
-| PartID_3    | Mevotech | 011f238fe      |
+| CompanyPart#     | Crossing_Number | CrossName      |
+|---------|-------------|-----------|
+| PartID_1 | DRL451     | ACDelco   |
+| PartID_1 | ZEF1066    | Beru      |
+| PartID_1 | ZEF1076    | Beru      |
+| PartID_1 | ZEF787     | Beru      |
+| PartID_1 | 4158       | Bougicord |
+| PartID_1 | 600/217    | Bremi     |
+| PartID_1 | LS99/190   | Champion  |
+| PartID_1 | 7683       | Doduco    |
+| PartID_1 | 4.8616     | Facet     |
+| PartID_1 | BK931530   | IISI      |
+| PartID_1 | FP-1265    | Ilkerler  |
+| PartID_1 | CCO.74240  | Mecra     |
+| PartID_1 | 300890787  | OEMCond   |
+| PartID_1 | 77776810   | OEMCond   |
+| PartID_1 | 7776810    | OEMCond   |
+| PartID_1 | 776810     | OEMCond   |
+| PartID_1 | 1810       | Unuvar    |
+| PartID_2 | 600/458    | Bremi     |
+| PartID_2 | 7674       | Doduco    |
+| PartID_2 | 4.9367     | Facet     |
+| PartID_2 | BK931540   | IISI      |
+| PartID_2 | FP-1283    | Ilkerler  |
+| PartID_2 | CCO.74420  | Mecra     |
+| PartID_2 | 46427497   | OEMCond   |
+| PartID_2 | 46563068   | OEMCond   |
+| PartID_2 | 4655306    | OEMCond   |
+| PartID_2 | 1497       | Unuvar    |
+| PartID_3 | ZEF1201    | Beru      |
+| PartID_3 | 4206       | Bougicord |
+| PartID_3 | 600/428    | Bremi     |
+| PartID_3 | 7826       | Doduco    |
+| PartID_3 | 4.9505     | Facet     |
+| PartID_3 | BK931550   | IISI      |
+| PartID_3 | FP-1285    | Ilkerler  |
+| PartID_3 | CCO.74410  | Mecra     |
+| PartID_3 | RC-FT1203  | NGK       |
+| PartID_3 | 46474814E  | OEMCond   |
+| PartID_3 | 46425912   | OEMCond   |
+| PartID_3 | 46474814   | OEMCond   |
+| PartID_3 | 46743086   | OEMCond   |
+| PartID_3 | 1814       | Unuvar    |
+
 
 > **Note:** This table is a representative sample and does not include all records from the actual dataset. Data have been modified for confidentiality.
 
@@ -67,15 +94,31 @@ By restructuring the data in this way, the **sales team** will be able to effici
 
 Below is the sample output wanted using the given sample data
 
-| CompanyPart# | Moog | Mevotech | Dorman | Mas | OEMcond                                       |
-|--------------|------------------|-------------------|------------------|------------------|----------------------------------------------|
-| PartID_1     | 399084d8f         | e7ffc5be7         | NaN              | NaN              | 1a399853c                                    |
-| PartID_1     | 399084d8f         | e7ffc5be7         | NaN              | NaN              | e75eff849                                    |
-| PartID_1     | 399084d8f         | e7ffc5be7         | NaN              | NaN              | 1a379cd37                                    |
-| PartID_2     | 21ea446a4         | c04c54e6a         |    NaN     | NaN              | 4a9efa64f                                    |
-| PartID_3     | 189942055         | 011f238fe               | 6e50b8a21        | fc6a76133        | f4f124f70                                    |
-| PartID_3     | 189942055         | 011f238fe               | 6e50b8a21        | fc6a76133        | 40236b986                                    |
-| PartID_3     | 189942055         | 011f238fe               | 6e50b8a21        | fc6a76133        | 40236b986                                    |
+| GTB      | OEMCond   | BERU    |   Bougicord | Bremi   | Mecra     |   ValuCraft | ACDelco   |   B_B_Long |   B_B | BoschCond   |   Brecav |   Carol | Champion   |   Delphi |   Doduco |   Facet | IISI     | Ilkerler   |   Intermotor |   Janmor |   Magneti |   Moroso | NGK       |   ProSpark |   Sentech |   SMP |   Tesla |   Unuvar |
+|:---------|:----------|:--------|------------:|:--------|:----------|------------:|:----------|-----------:|------:|:------------|---------:|--------:|:-----------|---------:|---------:|--------:|:---------|:-----------|-------------:|---------:|----------:|---------:|:----------|-----------:|----------:|------:|--------:|---------:|
+| PartID_1 | 300890787 | ZEF787  |        4158 | 600/217 | CCO.74240 |         nan | DRL451    |        nan |   nan | nan         |      nan |     nan | LS99/190   |      nan |     7683 |  4.8616 | BK931530 | FP-1265    |          nan |      nan |       nan |      nan | nan       |        nan |       nan |   nan |     nan |     1810 |
+| PartID_1 | 77776810  | ZEF787  |        4158 | 600/217 | CCO.74240 |         nan | DRL451    |        nan |   nan | nan         |      nan |     nan | LS99/190   |      nan |     7683 |  4.8616 | BK931530 | FP-1265    |          nan |      nan |       nan |      nan | nan       |        nan |       nan |   nan |     nan |     1810 |
+| PartID_1 | 7776810   | ZEF787  |        4158 | 600/217 | CCO.74240 |         nan | DRL451    |        nan |   nan | nan         |      nan |     nan | LS99/190   |      nan |     7683 |  4.8616 | BK931530 | FP-1265    |          nan |      nan |       nan |      nan | nan       |        nan |       nan |   nan |     nan |     1810 |
+| PartID_1 | 776810    | ZEF787  |        4158 | 600/217 | CCO.74240 |         nan | DRL451    |        nan |   nan | nan         |      nan |     nan | LS99/190   |      nan |     7683 |  4.8616 | BK931530 | FP-1265    |          nan |      nan |       nan |      nan | nan       |        nan |       nan |   nan |     nan |     1810 |
+| PartID_1 | 300890787 | ZEF1066 |        4158 | 600/217 | CCO.74240 |         nan | DRL451    |        nan |   nan | nan         |      nan |     nan | LS99/190   |      nan |     7683 |  4.8616 | BK931530 | FP-1265    |          nan |      nan |       nan |      nan | nan       |        nan |       nan |   nan |     nan |     1810 |
+| PartID_1 | 77776810  | ZEF1066 |        4158 | 600/217 | CCO.74240 |         nan | DRL451    |        nan |   nan | nan         |      nan |     nan | LS99/190   |      nan |     7683 |  4.8616 | BK931530 | FP-1265    |          nan |      nan |       nan |      nan | nan       |        nan |       nan |   nan |     nan |     1810 |
+| PartID_1 | 7776810   | ZEF1066 |        4158 | 600/217 | CCO.74240 |         nan | DRL451    |        nan |   nan | nan         |      nan |     nan | LS99/190   |      nan |     7683 |  4.8616 | BK931530 | FP-1265    |          nan |      nan |       nan |      nan | nan       |        nan |       nan |   nan |     nan |     1810 |
+| PartID_1 | 776810    | ZEF1066 |        4158 | 600/217 | CCO.74240 |         nan | DRL451    |        nan |   nan | nan         |      nan |     nan | LS99/190   |      nan |     7683 |  4.8616 | BK931530 | FP-1265    |          nan |      nan |       nan |      nan | nan       |        nan |       nan |   nan |     nan |     1810 |
+| PartID_1 | 300890787 | ZEF1076 |        4158 | 600/217 | CCO.74240 |         nan | DRL451    |        nan |   nan | nan         |      nan |     nan | LS99/190   |      nan |     7683 |  4.8616 | BK931530 | FP-1265    |          nan |      nan |       nan |      nan | nan       |        nan |       nan |   nan |     nan |     1810 |
+| PartID_1 | 77776810  | ZEF1076 |        4158 | 600/217 | CCO.74240 |         nan | DRL451    |        nan |   nan | nan         |      nan |     nan | LS99/190   |      nan |     7683 |  4.8616 | BK931530 | FP-1265    |          nan |      nan |       nan |      nan | nan       |        nan |       nan |   nan |     nan |     1810 |
+| PartID_1 | 7776810   | ZEF1076 |        4158 | 600/217 | CCO.74240 |         nan | DRL451    |        nan |   nan | nan         |      nan |     nan | LS99/190   |      nan |     7683 |  4.8616 | BK931530 | FP-1265    |          nan |      nan |       nan |      nan | nan       |        nan |       nan |   nan |     nan |     1810 |
+| PartID_1 | 776810    | ZEF1076 |        4158 | 600/217 | CCO.74240 |         nan | DRL451    |        nan |   nan | nan         |      nan |     nan | LS99/190   |      nan |     7683 |  4.8616 | BK931530 | FP-1265    |          nan |      nan |       nan |      nan | nan       |        nan |       nan |   nan |     nan |     1810 |
+| PartID_2 | 46427497  | nan     |         nan | 600/458 | CCO.74420 |         nan | nan       |        nan |   nan | nan         |      nan |     nan | nan        |      nan |     7674 |  4.9367 | BK931540 | FP-1283    |          nan |      nan |       nan |      nan | nan       |        nan |       nan |   nan |     nan |     1497 |
+| PartID_2 | 46563068  | nan     |         nan | 600/458 | CCO.74420 |         nan | nan       |        nan |   nan | nan         |      nan |     nan | nan        |      nan |     7674 |  4.9367 | BK931540 | FP-1283    |          nan |      nan |       nan |      nan | nan       |        nan |       nan |   nan |     nan |     1497 |
+| PartID_2 | 4655306   | nan     |         nan | 600/458 | CCO.74420 |         nan | nan       |        nan |   nan | nan         |      nan |     nan | nan        |      nan |     7674 |  4.9367 | BK931540 | FP-1283    |          nan |      nan |       nan |      nan | nan       |        nan |       nan |   nan |     nan |     1497 |
+| PartID_3 | 46474814E | ZEF1201 |        4206 | 600/428 | CCO.74410 |         nan | nan       |        nan |   nan | 986357181   |      nan |     nan | nan        |      nan |     7826 |  4.9505 | BK931550 | FP-1285    |          nan |      nan |       nan |      nan | RC-FT1203 |        nan |       nan |   nan |     nan |     1814 |
+| PartID_3 | 46425912  | ZEF1201 |        4206 | 600/428 | CCO.74410 |         nan | nan       |        nan |   nan | 986357181   |      nan |     nan | nan        |      nan |     7826 |  4.9505 | BK931550 | FP-1285    |          nan |      nan |       nan |      nan | RC-FT1203 |        nan |       nan |   nan |     nan |     1814 |
+| PartID_3 | 46474814  | ZEF1201 |        4206 | 600/428 | CCO.74410 |         nan | nan       |        nan |   nan | 986357181   |      nan |     nan | nan        |      nan |     7826 |  4.9505 | BK931550 | FP-1285    |          nan |      nan |       nan |      nan | RC-FT1203 |        nan |       nan |   nan |     nan |     1814 |
+| PartID_3 | 46743086  | ZEF1201 |        4206 | 600/428 | CCO.74410 |         nan | nan       |        nan |   nan | 986357181   |      nan |     nan | nan        |      nan |     7826 |  4.9505 | BK931550 | FP-1285    |          nan |      nan |       nan |      nan | RC-FT1203 |        nan |       nan |   nan |     nan |     1814 |
+| PartID_3 | 46474814E | ZEF1201 |        4206 | 600/428 | CCO.74410 |         nan | nan       |        nan |   nan | B181        |      nan |     nan | nan        |      nan |     7826 |  4.9505 | BK931550 | FP-1285    |          nan |      nan |       nan |      nan | RC-FT1203 |        nan |       nan |   nan |     nan |     1814 |
+| PartID_3 | 46425912  | ZEF1201 |        4206 | 600/428 | CCO.74410 |         nan | nan       |        nan |   nan | B181        |      nan |     nan | nan        |      nan |     7826 |  4.9505 | BK931550 | FP-1285    |          nan |      nan |       nan |      nan | RC-FT1203 |        nan |       nan |   nan |     nan |     1814 |
+| PartID_3 | 46474814  | ZEF1201 |        4206 | 600/428 | CCO.74410 |         nan | nan       |        nan |   nan | B181        |      nan |     nan | nan        |      nan |     7826 |  4.9505 | BK931550 | FP-1285    |          nan |      nan |       nan |      nan | RC-FT1203 |        nan |       nan |   nan |     nan |     1814 |
+| PartID_3 | 46743086  | ZEF1201 |        4206 | 600/428 | CCO.74410 |         nan | nan       |        nan |   nan | B181        |      nan |     nan | nan        |      nan |     7826 |  4.9505 | BK931550 | FP-1285    |          nan |      nan |       nan |      nan | RC-FT1203 |        nan |       nan |   nan |     nan |     1814 |
 
 > **Note:** This table is a representative sample and does not include all records from the actual dataset. Data have been modified for confidentiality.
 
