@@ -79,4 +79,15 @@ Take a glimpse at the raw data snapshot.
 | PartID_3    | OEMcond          | 694cfcbfd      |
 | PartID_3    | CrossbrandType_38 | 714ba50e4      |
 
+---
+
+| CompanyPart# | CrossbrandType_11 | CrossbrandType_14 | CrossbrandType_2 | CrossbrandType_5 | OEMcond                                       |
+|--------------|------------------|-------------------|------------------|------------------|----------------------------------------------|
+| PartID_1     | 399084d8f         | e7ffc5be7         | NaN              | NaN              | 1a399853c                                    |
+| PartID_1     | 399084d8f         | e7ffc5be7         | NaN              | NaN              | e75eff849                                    |
+| PartID_1     | 399084d8f         | e7ffc5be7         | NaN              | NaN              | 1a379cd37                                    |
+| PartID_2     | 21ea446a4         | c04c54e6a         | 313b64e58        | NaN              | 4a9efa64f                                    |
+| PartID_3     | 189942055         | NaN               | fc6a76133        | 6e50b8a21        | 40236b986                                    |
+| PartID_4     | 7d848cc58         | NaN               | 8bade43b4        | 5901f87bf        | 8f47b0f9a                                    |
+
 
