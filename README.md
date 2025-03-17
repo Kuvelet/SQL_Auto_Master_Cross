@@ -12,8 +12,6 @@
 
 -[Transformation](#transformation)
 
--[Results & Findings](#results--findings)
-
 -[Next Steps](#next-steps)
 
 ### Project Overview
@@ -122,7 +120,7 @@ This restructuring approach aims to create a robust data framework that supports
 
 Below is the sample output wanted using the given sample data
 
-| GTB      | OEMCond   | BERU    |   Bougicord | Bremi   | Mecra     |   ValuCraft | ACDelco   |   B_B_Long |   B_B | BoschCond   |   Brecav |   Carol | Champion   |   Delphi |   Doduco |   Facet | IISI     | Ilkerler   |   Intermotor |   Janmor |   Magneti |   Moroso | NGK       |   ProSpark |   Sentech |   SMP |   Tesla |   Unuvar |
+| PartID      | OEMCond   | BERU    |   Bougicord | Bremi   | Mecra     |   ValuCraft | ACDelco   |   B_B_Long |   B_B | BoschCond   |   Brecav |   Carol | Champion   |   Delphi |   Doduco |   Facet | IISI     | Ilkerler   |   Intermotor |   Janmor |   Magneti |   Moroso | NGK       |   ProSpark |   Sentech |   SMP |   Tesla |   Unuvar |
 |:---------|:----------|:--------|------------:|:--------|:----------|------------:|:----------|-----------:|------:|:------------|---------:|--------:|:-----------|---------:|---------:|--------:|:---------|:-----------|-------------:|---------:|----------:|---------:|:----------|-----------:|----------:|------:|--------:|---------:|
 | PartID_1 | 300890787 | ZEF787  |        4158 | 600/217 | CCO.74240 |         nan | DRL451    |        nan |   nan | nan         |      nan |     nan | LS99/190   |      nan |     7683 |  4.8616 | BK931530 | FP-1265    |          nan |      nan |       nan |      nan | nan       |        nan |       nan |   nan |     nan |     1810 |
 | PartID_1 | 77776810  | ZEF787  |        4158 | 600/217 | CCO.74240 |         nan | DRL451    |        nan |   nan | nan         |      nan |     nan | LS99/190   |      nan |     7683 |  4.8616 | BK931530 | FP-1265    |          nan |      nan |       nan |      nan | nan       |        nan |       nan |   nan |     nan |     1810 |
@@ -149,6 +147,245 @@ Below is the sample output wanted using the given sample data
 | PartID_3 | 46743086  | ZEF1201 |        4206 | 600/428 | CCO.74410 |         nan | nan       |        nan |   nan | B181        |      nan |     nan | nan        |      nan |     7826 |  4.9505 | BK931550 | FP-1285    |          nan |      nan |       nan |      nan | RC-FT1203 |        nan |       nan |   nan |     nan |     1814 |
 
 > **Note:** This table is a representative sample and does not include all records from the actual dataset. Data have been modified for confidentiality.
+
+
+Below is the stored procedure that I consistently utilize whenever a new part cross needs to be added or when existing cross-references require modification.
+
+This procedure is designed to ensure that every new cross-reference is integrated accurately into the system while maintaining data integrity and consistency. Additionally, it allows for the seamless updating of existing cross data when changes arise, such as supersessions, manufacturer updates, or corrections due to inefficiencies or chronic issues.
+
+By using this structured approach, we can guarantee that the database remains reliable and up-to-date, ensuring the sales team has immediate access to the most current cross-reference information. This enhances our ability to respond to customer inquiries with speed and precision while reducing the risk of data discrepancies.
+
+```sql
+USE [MASTER]
+GO
+/****** Object:  StoredProcedure [dbo].[usp_CreateCrossMaster]    Script Date: 3/17/2025 4:08:27 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[usp_CreateCrossMaster]
+AS
+BEGIN
+    -- Drop the table if it already exists
+    IF OBJECT_ID('dbo.CrossMaster_PartID', 'U') IS NOT NULL
+    BEGIN
+        DROP TABLE dbo.CrossMaster_PartID;
+    END;
+
+    -- Define CTEs for each 'Type'
+    WITH BERU_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'BERU'
+    ),
+    Bougicord_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'Bougicord'
+    ),
+    Bremi_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'Bremi'
+    ),
+    Mecra_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'Mecra'
+    ),
+    ValuCraft_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'ValuCraft'
+    ),
+    ACDelco_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'ACDelco'
+    ),
+    B_B_Long_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'B&B_Long'
+    ),
+    B_B_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'B&B'
+    ),
+    BoschCond_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'BoschCond'
+    ),
+    Brecav_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'Brecav'
+    ),
+    Carol_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'Carol'
+    ),
+    Champion_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'Champion'
+    ),
+    Delphi_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'Delphi'
+    ),
+    Doduco_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'Doduco'
+    ),
+    Facet_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'Facet'
+    ),
+    IISI_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'IISI'
+    ),
+    Ilkerler_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'Ilkerler'
+    ),
+    Intermotor_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'Intermotor'
+    ),
+    Janmor_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'Janmor'
+    ),
+    Magneti_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'Magneti'
+    ),
+    Moroso_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'Moroso'
+    ),
+    NGK_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'NGK'
+    ),
+    ProSpark_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'ProSpark'
+    ),
+    Sentech_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'Sentech'
+    ),
+    SMP_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'SMP'
+    ),
+    Tesla_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'Tesla'
+    ),
+    Unuvar_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'Unuvar'
+    ),
+    OEMCond_CTE AS (
+        SELECT PartID, Part_Number
+        FROM [dbo].[CrossMaster_Raw]
+        WHERE Type = 'OEMCond'
+    )
+
+    -- Insert the final result into CrossMaster_PartID table
+    SELECT
+        COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID, ValuCraft_CTE.PartID, ACDelco_CTE.PartID,
+                 B_B_Long_CTE.PartID, B_B_CTE.PartID, BoschCond_CTE.PartID, Brecav_CTE.PartID, Carol_CTE.PartID, Champion_CTE.PartID,
+                 Delphi_CTE.PartID, Doduco_CTE.PartID, Facet_CTE.PartID, IISI_CTE.PartID, Ilkerler_CTE.PartID, Intermotor_CTE.PartID,
+                 Janmor_CTE.PartID, Magneti_CTE.PartID, Moroso_CTE.PartID, NGK_CTE.PartID, ProSpark_CTE.PartID, Sentech_CTE.PartID,
+                 SMP_CTE.PartID, Tesla_CTE.PartID, Unuvar_CTE.PartID, OEMCond_CTE.PartID) AS PartID,
+        BERU_CTE.Part_Number AS BERU,
+        Bougicord_CTE.Part_Number AS Bougicord,
+        Bremi_CTE.Part_Number AS Bremi,
+        Mecra_CTE.Part_Number AS Mecra,
+        ValuCraft_CTE.Part_Number AS ValuCraft,
+        ACDelco_CTE.Part_Number AS ACDelco,
+        B_B_Long_CTE.Part_Number AS B_B_Long,
+        B_B_CTE.Part_Number AS B_B,
+        BoschCond_CTE.Part_Number AS BoschCond,
+        Brecav_CTE.Part_Number AS Brecav,
+        Carol_CTE.Part_Number AS Carol,
+        Champion_CTE.Part_Number AS Champion,
+        Delphi_CTE.Part_Number AS Delphi,
+        Doduco_CTE.Part_Number AS Doduco,
+        Facet_CTE.Part_Number AS Facet,
+        IISI_CTE.Part_Number AS IISI,
+        Ilkerler_CTE.Part_Number AS Ilkerler,
+        Intermotor_CTE.Part_Number AS Intermotor,
+        Janmor_CTE.Part_Number AS Janmor,
+        Magneti_CTE.Part_Number AS Magneti,
+        Moroso_CTE.Part_Number AS Moroso,
+        NGK_CTE.Part_Number AS NGK,
+        ProSpark_CTE.Part_Number AS ProSpark,
+        Sentech_CTE.Part_Number AS Sentech,
+        SMP_CTE.Part_Number AS SMP,
+        Tesla_CTE.Part_Number AS Tesla,
+        Unuvar_CTE.Part_Number AS Unuvar,
+        OEMCond_CTE.Part_Number AS OEMCond
+    INTO dbo.CrossMaster_PartID
+    FROM
+        BERU_CTE
+    FULL OUTER JOIN Bougicord_CTE ON BERU_CTE.PartID = Bougicord_CTE.PartID
+    FULL OUTER JOIN Bremi_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID) = Bremi_CTE.PartID
+    FULL OUTER JOIN Mecra_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID) = Mecra_CTE.PartID
+    FULL OUTER JOIN ValuCraft_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID) = ValuCraft_CTE.PartID
+    FULL OUTER JOIN ACDelco_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID, ValuCraft_CTE.PartID) = ACDelco_CTE.PartID
+    FULL OUTER JOIN B_B_Long_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID, ValuCraft_CTE.PartID, ACDelco_CTE.PartID) = B_B_Long_CTE.PartID
+    FULL OUTER JOIN B_B_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID, ValuCraft_CTE.PartID, ACDelco_CTE.PartID, B_B_Long_CTE.PartID) = B_B_CTE.PartID
+    FULL OUTER JOIN BoschCond_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID, ValuCraft_CTE.PartID, ACDelco_CTE.PartID, B_B_Long_CTE.PartID, B_B_CTE.PartID) = BoschCond_CTE.PartID
+    FULL OUTER JOIN Brecav_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID, ValuCraft_CTE.PartID, ACDelco_CTE.PartID, B_B_Long_CTE.PartID, B_B_CTE.PartID, BoschCond_CTE.PartID) = Brecav_CTE.PartID
+    FULL OUTER JOIN Carol_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID, ValuCraft_CTE.PartID, ACDelco_CTE.PartID, B_B_Long_CTE.PartID, B_B_CTE.PartID, BoschCond_CTE.PartID, Brecav_CTE.PartID) = Carol_CTE.PartID
+    FULL OUTER JOIN Champion_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID, ValuCraft_CTE.PartID, ACDelco_CTE.PartID, B_B_Long_CTE.PartID, B_B_CTE.PartID, BoschCond_CTE.PartID, Brecav_CTE.PartID, Carol_CTE.PartID) = Champion_CTE.PartID
+    FULL OUTER JOIN Delphi_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID, ValuCraft_CTE.PartID, ACDelco_CTE.PartID, B_B_Long_CTE.PartID, B_B_CTE.PartID, BoschCond_CTE.PartID, Brecav_CTE.PartID, Carol_CTE.PartID, Champion_CTE.PartID) = Delphi_CTE.PartID
+    FULL OUTER JOIN Doduco_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID, ValuCraft_CTE.PartID, ACDelco_CTE.PartID, B_B_Long_CTE.PartID, B_B_CTE.PartID, BoschCond_CTE.PartID, Brecav_CTE.PartID, Carol_CTE.PartID, Champion_CTE.PartID, Delphi_CTE.PartID) = Doduco_CTE.PartID
+    FULL OUTER JOIN Facet_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID, ValuCraft_CTE.PartID, ACDelco_CTE.PartID, B_B_Long_CTE.PartID, B_B_CTE.PartID, BoschCond_CTE.PartID, Brecav_CTE.PartID, Carol_CTE.PartID, Champion_CTE.PartID, Delphi_CTE.PartID, Doduco_CTE.PartID) = Facet_CTE.PartID
+    FULL OUTER JOIN IISI_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID, ValuCraft_CTE.PartID, ACDelco_CTE.PartID, B_B_Long_CTE.PartID, B_B_CTE.PartID, BoschCond_CTE.PartID, Brecav_CTE.PartID, Carol_CTE.PartID, Champion_CTE.PartID, Delphi_CTE.PartID, Doduco_CTE.PartID, Facet_CTE.PartID) = IISI_CTE.PartID
+    FULL OUTER JOIN Ilkerler_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID, ValuCraft_CTE.PartID, ACDelco_CTE.PartID, B_B_Long_CTE.PartID, B_B_CTE.PartID, BoschCond_CTE.PartID, Brecav_CTE.PartID, Carol_CTE.PartID, Champion_CTE.PartID, Delphi_CTE.PartID, Doduco_CTE.PartID, Facet_CTE.PartID, IISI_CTE.PartID) = Ilkerler_CTE.PartID
+    FULL OUTER JOIN Intermotor_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID, ValuCraft_CTE.PartID, ACDelco_CTE.PartID, B_B_Long_CTE.PartID, B_B_CTE.PartID, BoschCond_CTE.PartID, Brecav_CTE.PartID, Carol_CTE.PartID, Champion_CTE.PartID, Delphi_CTE.PartID, Doduco_CTE.PartID, Facet_CTE.PartID, IISI_CTE.PartID, Ilkerler_CTE.PartID) = Intermotor_CTE.PartID
+    FULL OUTER JOIN Janmor_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID, ValuCraft_CTE.PartID, ACDelco_CTE.PartID, B_B_Long_CTE.PartID, B_B_CTE.PartID, BoschCond_CTE.PartID, Brecav_CTE.PartID, Carol_CTE.PartID, Champion_CTE.PartID, Delphi_CTE.PartID, Doduco_CTE.PartID, Facet_CTE.PartID, IISI_CTE.PartID, Ilkerler_CTE.PartID, Intermotor_CTE.PartID) = Janmor_CTE.PartID
+    FULL OUTER JOIN Magneti_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID, ValuCraft_CTE.PartID, ACDelco_CTE.PartID, B_B_Long_CTE.PartID, B_B_CTE.PartID, BoschCond_CTE.PartID, Brecav_CTE.PartID, Carol_CTE.PartID, Champion_CTE.PartID, Delphi_CTE.PartID, Doduco_CTE.PartID, Facet_CTE.PartID, IISI_CTE.PartID, Ilkerler_CTE.PartID, Intermotor_CTE.PartID, Janmor_CTE.PartID) = Magneti_CTE.PartID
+    FULL OUTER JOIN Moroso_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID, ValuCraft_CTE.PartID, ACDelco_CTE.PartID, B_B_Long_CTE.PartID, B_B_CTE.PartID, BoschCond_CTE.PartID, Brecav_CTE.PartID, Carol_CTE.PartID, Champion_CTE.PartID, Delphi_CTE.PartID, Doduco_CTE.PartID, Facet_CTE.PartID, IISI_CTE.PartID, Ilkerler_CTE.PartID, Intermotor_CTE.PartID, Janmor_CTE.PartID, Magneti_CTE.PartID) = Moroso_CTE.PartID
+    FULL OUTER JOIN NGK_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID, ValuCraft_CTE.PartID, ACDelco_CTE.PartID, B_B_Long_CTE.PartID, B_B_CTE.PartID, BoschCond_CTE.PartID, Brecav_CTE.PartID, Carol_CTE.PartID, Champion_CTE.PartID, Delphi_CTE.PartID, Doduco_CTE.PartID, Facet_CTE.PartID, IISI_CTE.PartID, Ilkerler_CTE.PartID, Intermotor_CTE.PartID, Janmor_CTE.PartID, Magneti_CTE.PartID, Moroso_CTE.PartID) = NGK_CTE.PartID
+    FULL OUTER JOIN ProSpark_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID, ValuCraft_CTE.PartID, ACDelco_CTE.PartID, B_B_Long_CTE.PartID, B_B_CTE.PartID, BoschCond_CTE.PartID, Brecav_CTE.PartID, Carol_CTE.PartID, Champion_CTE.PartID, Delphi_CTE.PartID, Doduco_CTE.PartID, Facet_CTE.PartID, IISI_CTE.PartID, Ilkerler_CTE.PartID, Intermotor_CTE.PartID, Janmor_CTE.PartID, Magneti_CTE.PartID, Moroso_CTE.PartID, NGK_CTE.PartID) = ProSpark_CTE.PartID
+    FULL OUTER JOIN Sentech_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID, ValuCraft_CTE.PartID, ACDelco_CTE.PartID, B_B_Long_CTE.PartID, B_B_CTE.PartID, BoschCond_CTE.PartID, Brecav_CTE.PartID, Carol_CTE.PartID, Champion_CTE.PartID, Delphi_CTE.PartID, Doduco_CTE.PartID, Facet_CTE.PartID, IISI_CTE.PartID, Ilkerler_CTE.PartID, Intermotor_CTE.PartID, Janmor_CTE.PartID, Magneti_CTE.PartID, Moroso_CTE.PartID, NGK_CTE.PartID, ProSpark_CTE.PartID) = Sentech_CTE.PartID
+    FULL OUTER JOIN SMP_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID, ValuCraft_CTE.PartID, ACDelco_CTE.PartID, B_B_Long_CTE.PartID, B_B_CTE.PartID, BoschCond_CTE.PartID, Brecav_CTE.PartID, Carol_CTE.PartID, Champion_CTE.PartID, Delphi_CTE.PartID, Doduco_CTE.PartID, Facet_CTE.PartID, IISI_CTE.PartID, Ilkerler_CTE.PartID, Intermotor_CTE.PartID, Janmor_CTE.PartID, Magneti_CTE.PartID, Moroso_CTE.PartID, NGK_CTE.PartID, ProSpark_CTE.PartID, Sentech_CTE.PartID) = SMP_CTE.PartID
+    FULL OUTER JOIN Tesla_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID, ValuCraft_CTE.PartID, ACDelco_CTE.PartID, B_B_Long_CTE.PartID, B_B_CTE.PartID, BoschCond_CTE.PartID, Brecav_CTE.PartID, Carol_CTE.PartID, Champion_CTE.PartID, Delphi_CTE.PartID, Doduco_CTE.PartID, Facet_CTE.PartID, IISI_CTE.PartID, Ilkerler_CTE.PartID, Intermotor_CTE.PartID, Janmor_CTE.PartID, Magneti_CTE.PartID, Moroso_CTE.PartID, NGK_CTE.PartID, ProSpark_CTE.PartID, Sentech_CTE.PartID, SMP_CTE.PartID) = Tesla_CTE.PartID
+    FULL OUTER JOIN Unuvar_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID, ValuCraft_CTE.PartID, ACDelco_CTE.PartID, B_B_Long_CTE.PartID, B_B_CTE.PartID, BoschCond_CTE.PartID, Brecav_CTE.PartID, Carol_CTE.PartID, Champion_CTE.PartID, Delphi_CTE.PartID, Doduco_CTE.PartID, Facet_CTE.PartID, IISI_CTE.PartID, Ilkerler_CTE.PartID, Intermotor_CTE.PartID, Janmor_CTE.PartID, Magneti_CTE.PartID, Moroso_CTE.PartID, NGK_CTE.PartID, ProSpark_CTE.PartID, Sentech_CTE.PartID, SMP_CTE.PartID, Tesla_CTE.PartID) = Unuvar_CTE.PartID
+    FULL OUTER JOIN OEMCond_CTE ON COALESCE(BERU_CTE.PartID, Bougicord_CTE.PartID, Bremi_CTE.PartID, Mecra_CTE.PartID, ValuCraft_CTE.PartID, ACDelco_CTE.PartID, B_B_Long_CTE.PartID, B_B_CTE.PartID, BoschCond_CTE.PartID, Brecav_CTE.PartID, Carol_CTE.PartID, Champion_CTE.PartID, Delphi_CTE.PartID, Doduco_CTE.PartID, Facet_CTE.PartID, IISI_CTE.PartID, Ilkerler_CTE.PartID, Intermotor_CTE.PartID, Janmor_CTE.PartID, Magneti_CTE.PartID, Moroso_CTE.PartID, NGK_CTE.PartID, ProSpark_CTE.PartID, Sentech_CTE.PartID, SMP_CTE.PartID, Tesla_CTE.PartID, Unuvar_CTE.PartID) = OEMCond_CTE.PartID;
+
+END;
+```
+
+
+
+
 
 
 
