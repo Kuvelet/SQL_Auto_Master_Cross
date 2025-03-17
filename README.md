@@ -48,16 +48,8 @@ Here's a snapshot of the raw data. I plan to restructure it by creating columns 
 | PartID_2    | OEMcond          | 4a9efa64f      |
 | PartID_2    | MAS | 313b64e58      |
 | PartID_2    | MOOG | 21ea446a4      |
-| PartID_2    | OEMcond          | 9535ddf65      |
-| PartID_2    | OEMcond          | aad951cac      |
 | PartID_2    | OEMcond          | 4a9efa64f      |
-| PartID_2    | OEMcond          | 714ba50e4      |
-| PartID_2    | OEMcond          | c9ab5492c      |
-| PartID_2    | OEMcond          | e733a8698      |
 | PartID_2    | Mevotech | c04c54e6a      |
-| PartID_2    | OEMcond          | dbc852d44      |
-| PartID_2    | OEMcond          | 83efa47d3      |
-| PartID_2    | OEMcond          | e55c262cc      |
 | PartID_2    | Dorman | dba70e8e7      |
 | PartID_3    | OEMcond          | 40236b986      |
 | PartID_3    | MAS  | fc6a76133      |
