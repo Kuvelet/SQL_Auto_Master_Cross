@@ -36,7 +36,7 @@ The provided dataset consists of three primary columns: `CrossName`, `CrossingNu
 
 ### Transformation
 
-Here's a snapshot of the raw data. I plan to restructure it by creating columns for each unique CrossName and generating rows for every possible combination of values from the dataset.
+Here’s an overview of the raw dataset.
 
 | CompanyPart# | CrossName         | CrossingNumber |
 |-------------|------------------|----------------|
@@ -57,6 +57,15 @@ Here's a snapshot of the raw data. I plan to restructure it by creating columns 
 | PartID_3    | Mevotech | 011f238fe      |
 
 
+My plan is to restructure this data by creating dedicated columns for each unique **CrossName**, ensuring a more organized and accessible format. For each row, I will generate all possible combinations of values derived from the dataset. 
+
+- If a **CrossName** is not available for a particular entry, it will be represented as **null** to maintain data integrity.  
+- In cases where multiple **CrossNames** exist for the same brand, each unique combination will be represented in separate rows. This approach ensures that every possible permutation is captured, providing a comprehensive view of the data. 
+
+By restructuring the data in this way, the **sales team** will be able to efficiently query and retrieve information from customer **RFQs (Requests for Quotations)**. This will streamline the process of identifying the relevant cross-references and enhance the team's ability to respond to customer inquiries with greater accuracy and speed.
+
+Below is the sample output wanted using the given sample data
+
 | CompanyPart# | Moog | Mevotech | Dorman | Mas | OEMcond                                       |
 |--------------|------------------|-------------------|------------------|------------------|----------------------------------------------|
 | PartID_1     | 399084d8f         | e7ffc5be7         | NaN              | NaN              | 1a399853c                                    |
@@ -66,6 +75,8 @@ Here's a snapshot of the raw data. I plan to restructure it by creating columns 
 | PartID_3     | 189942055         | 011f238fe               | 6e50b8a21        | fc6a76133        | f4f124f70                                    |
 | PartID_3     | 189942055         | 011f238fe               | 6e50b8a21        | fc6a76133        | 40236b986                                    |
 | PartID_3     | 189942055         | 011f238fe               | 6e50b8a21        | fc6a76133        | 40236b986                                    |
+
+
 
 
 
