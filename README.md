@@ -85,12 +85,40 @@ Here’s an overview of the raw dataset.
 
 > **Note:** This table is a representative sample and does not include all records from the actual dataset. Data have been modified for confidentiality.
 
-My plan is to restructure this data by creating dedicated columns for each unique **CrossName**, ensuring a more organized and accessible format. For each row, I will generate all possible combinations of values derived from the dataset. 
+#### Data Restructuring Plan for Enhanced RFQ Processing
 
-- If a **CrossName** is not available for a particular entry, it will be represented as **null** to maintain data integrity.  
-- In cases where multiple **CrossNames** exist for the same brand, each unique combination will be represented in separate rows. This approach ensures that every possible permutation is captured, providing a comprehensive view of the data. 
+The objective is to restructure the data by creating dedicated columns for each unique **CrossName**, ensuring a more organized and accessible format. This will enhance the efficiency of querying and retrieving information, particularly for the sales team handling customer **RFQs (Requests for Quotations)**.
 
-By restructuring the data in this way, the **sales team** will be able to efficiently query and retrieve information from customer **RFQs (Requests for Quotations)**. This will streamline the process of identifying the relevant cross-references and enhance the team's ability to respond to customer inquiries with greater accuracy and speed.
+#### Key Steps in Data Restructuring:
+
+1. **Dedicated Columns for CrossNames:**
+
+   - Each unique **CrossName** will be represented as a separate column.
+   - For each row, all possible combinations of values derived from the dataset will be generated.
+
+2. **Handling Missing CrossNames:**
+
+   - If a **CrossName** is not available for a particular entry, it will be represented as **null** to maintain data integrity.
+
+3. **Capturing Multiple Combinations:**
+
+   - In cases where multiple **CrossNames** exist for the same brand, each unique combination will be represented in separate rows.
+   - This ensures every possible permutation is captured, providing a comprehensive view of the data.
+
+4. **Addressing Multiple Crosses for Single Part Numbers:**
+
+   - There are instances where each **CrossName** may have multiple crosses for a single part number. This occurs when manufacturers make minor changes to a part due to inefficiencies, repeated returns, or chronic problems.
+   - When such changes happen, a part number supersedes to another number but still corresponds to the same car and submodel.
+   - The restructuring will account for these scenarios, ensuring that superseded part numbers and their valid crosses are accurately reflected in the data.
+
+#### Benefits of Restructuring:
+
+- **Improved Data Accessibility:** Streamlined structure for faster and more accurate data retrieval.
+- **Enhanced RFQ Response:** Simplified process for identifying relevant cross-references, allowing the sales team to respond to customer inquiries with greater accuracy and speed.
+- **Comprehensive Data Representation:** Ensures no valid cross-reference is overlooked, even when multiple crosses or supersessions exist.
+
+This restructuring approach aims to create a robust data framework that supports efficient and effective RFQ processing.
+
 
 Below is the sample output wanted using the given sample data
 
