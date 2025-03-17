@@ -42,28 +42,30 @@ Here's a snapshot of the raw data. I plan to restructure it by creating columns 
 |-------------|------------------|----------------|
 | PartID_1    | OEMcond          | 1a399853c      |
 | PartID_1    | OEMcond          | e75eff849      |
-| PartID_1    | MOOG | 399084d8f      |
 | PartID_1    | OEMcond          | 1a379cd37      |
+| PartID_1    | MOOG | 399084d8f      |
 | PartID_1    | Mevotech | e7ffc5be7      |
 | PartID_2    | OEMcond          | 4a9efa64f      |
 | PartID_2    | MOOG | 21ea446a4      |
 | PartID_2    | Mevotech | c04c54e6a      |
 | PartID_3    | OEMcond          | 40236b986      |
-| PartID_3    | MAS  | fc6a76133      |
-| PartID_3    | ImportDirect  | 6e50b8a21      |
-| PartID_3    | MOOG | 189942055      |
 | PartID_3    | OEMcond          | f4f124f70      |
 | PartID_3    | OEMcond          | 40236b986      |
+| PartID_3    | MAS  | fc6a76133      |
+| PartID_3    | Dorman  | 6e50b8a21      |
+| PartID_3    | MOOG | 189942055      |
 | PartID_3    | Mevotech | 011f238fe      |
 
 
-| CompanyPart# | Moog | Mevotech | Mevotech | Mas | OEMcond                                       |
+| CompanyPart# | Moog | Mevotech | Dorman | Mas | OEMcond                                       |
 |--------------|------------------|-------------------|------------------|------------------|----------------------------------------------|
 | PartID_1     | 399084d8f         | e7ffc5be7         | NaN              | NaN              | 1a399853c                                    |
 | PartID_1     | 399084d8f         | e7ffc5be7         | NaN              | NaN              | e75eff849                                    |
 | PartID_1     | 399084d8f         | e7ffc5be7         | NaN              | NaN              | 1a379cd37                                    |
-| PartID_2     | 21ea446a4         | c04c54e6a         | 313b64e58        | NaN              | 4a9efa64f                                    |
-| PartID_3     | 189942055         | NaN               | fc6a76133        | 6e50b8a21        | 40236b986                                    |
-| PartID_4     | 7d848cc58         | NaN               | 8bade43b4        | 5901f87bf        | 8f47b0f9a                                    |
+| PartID_2     | 21ea446a4         | c04c54e6a         |    NaN     | NaN              | 4a9efa64f                                    |
+| PartID_3     | 189942055         | 011f238fe               | 6e50b8a21        | fc6a76133        | f4f124f70                                    |
+| PartID_3     | 189942055         | 011f238fe               | 6e50b8a21        | fc6a76133        | 40236b986                                    |
+| PartID_3     | 189942055         | 011f238fe               | 6e50b8a21        | fc6a76133        | 40236b986                                    |
+
 
 
