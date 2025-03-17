@@ -26,7 +26,7 @@ The Auto_Cross_Data_Anonymous CSV file contains over 150,000 rows of data. While
 
 ### Tools
 
--Microsoft SQL Server
+- Microsoft SQL Server
 
 ### Data Context & Preparation
 
