@@ -36,5 +36,15 @@ The provided dataset consists of three primary columns: `CrossName`, `CrossingNu
 
 ### Transformation
 
+| CrossName        | CrossingNumber                                                | CompanyPart# |
+|------------------|--------------------------------------------------------------|--------------|
+| CrossbrandType_1 | 1a399853c67162cbce50d1b6ed1878ca0271e6af813e4aa832cd1c4986c96acb | PartID_1     |
+| CrossbrandType_1 | e75eff849dd8ebb894a773634d8f3b9a2cedcce27df09eeed75a868c2265b256 | PartID_1     |
+| CrossbrandType_11| 399084d8f947b8b2358fac366dc666ff38b6687ebd647c8458ca4c1df3f7a941 | PartID_1     |
+| CrossbrandType_1 | 1a379cd377f7e946f9773281950f9018883ed51f156c493a5f8ee93fd21af4da | PartID_1     |
+| CrossbrandType_1 | 4a63622c3655ec284482d12ee2aa747540620814a9d01d6847c81450a5782645 | PartID_1     |
+| CrossbrandType_1 | ca65b19218527c70680da0b8825c34494b162c709391c96f5aacc9416edecd23 | PartID_1     |
+
+
 
 
