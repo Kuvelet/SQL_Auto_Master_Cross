@@ -44,13 +44,7 @@ Here's a snapshot of the raw data. I plan to restructure it by creating columns 
 | PartID_1    | OEMcond          | e75eff849      |
 | PartID_1    | MOOG | 399084d8f      |
 | PartID_1    | OEMcond          | 1a379cd37      |
-| PartID_1    | OEMcond          | 4a63622c3      |
-| PartID_1    | OEMcond          | 1a399853c      |
-| PartID_1    | OEMcond          | ca65b1921      |
-| PartID_1    | OEMcond          | c0c572051      |
-| PartID_1    | OEMcond          | e75eff849      |
 | PartID_1    | Mevotech | e7ffc5be7      |
-| PartID_1    | OEMcond          | 73b32d5a8      |
 | PartID_2    | OEMcond          | 4a9efa64f      |
 | PartID_2    | MAS | 313b64e58      |
 | PartID_2    | MOOG | 21ea446a4      |
