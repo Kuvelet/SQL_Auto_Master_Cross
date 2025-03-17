@@ -49,10 +49,10 @@ Here's a snapshot of the raw data. I plan to restructure it by creating columns 
 | PartID_1    | OEMcond          | ca65b1921      |
 | PartID_1    | OEMcond          | c0c572051      |
 | PartID_1    | OEMcond          | e75eff849      |
-| PartID_1    | CrossbrandType_14 | e7ffc5be7      |
+| PartID_1    | Mevotech | e7ffc5be7      |
 | PartID_1    | OEMcond          | 73b32d5a8      |
 | PartID_2    | OEMcond          | 4a9efa64f      |
-| PartID_2    | CrossbrandType_2  | 313b64e58      |
+| PartID_2    | MAS | 313b64e58      |
 | PartID_2    | MOOG | 21ea446a4      |
 | PartID_2    | OEMcond          | 9535ddf65      |
 | PartID_2    | OEMcond          | aad951cac      |
@@ -60,28 +60,28 @@ Here's a snapshot of the raw data. I plan to restructure it by creating columns 
 | PartID_2    | OEMcond          | 714ba50e4      |
 | PartID_2    | OEMcond          | c9ab5492c      |
 | PartID_2    | OEMcond          | e733a8698      |
-| PartID_2    | CrossbrandType_14 | c04c54e6a      |
+| PartID_2    | Mevotech | c04c54e6a      |
 | PartID_2    | OEMcond          | dbc852d44      |
 | PartID_2    | OEMcond          | 83efa47d3      |
 | PartID_2    | OEMcond          | e55c262cc      |
-| PartID_2    | CrossbrandType_38 | dba70e8e7      |
+| PartID_2    | Dorman | dba70e8e7      |
 | PartID_3    | OEMcond          | 40236b986      |
-| PartID_3    | CrossbrandType_2  | fc6a76133      |
-| PartID_3    | CrossbrandType_5  | 6e50b8a21      |
-| PartID_3    | CrossbrandType_11 | 189942055      |
+| PartID_3    | MAS  | fc6a76133      |
+| PartID_3    | ImportDirect  | 6e50b8a21      |
+| PartID_3    | MOOG | 189942055      |
 | PartID_3    | OEMcond          | f4f124f70      |
 | PartID_3    | OEMcond          | 40236b986      |
 | PartID_3    | OEMcond          | 891efb4c6      |
 | PartID_3    | OEMcond          | dba70e8e7      |
-| PartID_3    | CrossbrandType_14 | 011f238fe      |
+| PartID_3    | Mevotech | 011f238fe      |
 | PartID_3    | OEMcond          | cd658b895      |
 | PartID_3    | OEMcond          | 6591b474a      |
 | PartID_3    | OEMcond          | 694cfcbfd      |
-| PartID_3    | CrossbrandType_38 | 714ba50e4      |
+| PartID_3    | Dorman | 714ba50e4      |
 
 ---
 
-| CompanyPart# | CrossbrandType_11 | CrossbrandType_14 | CrossbrandType_2 | CrossbrandType_5 | OEMcond                                       |
+| CompanyPart# | Moog | Mevotech | Mevotech | Mas | OEMcond                                       |
 |--------------|------------------|-------------------|------------------|------------------|----------------------------------------------|
 | PartID_1     | 399084d8f         | e7ffc5be7         | NaN              | NaN              | 1a399853c                                    |
 | PartID_1     | 399084d8f         | e7ffc5be7         | NaN              | NaN              | e75eff849                                    |
