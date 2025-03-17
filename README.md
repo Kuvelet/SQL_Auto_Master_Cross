@@ -10,7 +10,7 @@
 
 -[Data Context & Preparation](#data-context--preparation)
 
--[Analysis](#analysis)
+-[Transformation](#transformation)
 
 -[Results & Findings](#results--findings)
 
@@ -30,7 +30,11 @@ The Auto_Cross_Data_Anonymous CSV file contains over 150,000 rows of data. While
 
 ### Data Context & Preparation
 
-The provided dataset consists of three primary columns: `CrossName`, `CrossingNumber`, and `CompanyPart#`. The `CrossName` column categorizes the type of cross-branding associated with each part, while the `CrossingNumber` is to be a unique alphanumeric identifier,  representing a hashed or encrypted value for each cross-reference. The CompanyPart# originally contained specific part numbers associated with a company but has now been anonymized to generic identifiers in the format of PartID_1, PartID_2, and so on. This anonymization helps protect sensitive product information while maintaining the uniqueness of each part for analysis or processing purposes.
+The provided dataset consists of three primary columns: `CrossName`, `CrossingNumber`, and `CompanyPart#`. The `CrossName` column categorizes the type of cross-branding associated with each part, while the `CrossingNumber` is to be a unique alphanumeric identifier,  representing a hashed or encrypted value for each cross-reference. The `CompanyPart#` originally contained specific part numbers associated with a company but has now been anonymized to generic identifiers in the format of PartID_1, PartID_2, and so on. This anonymization helps protect sensitive product information while maintaining the uniqueness of each part for analysis or processing purposes.
+
+***Import the data as a flat file into SQL Server to initiate the transformation process.**
+
+### Transformation
 
 
 
