@@ -46,9 +46,7 @@ Here's a snapshot of the raw data. I plan to restructure it by creating columns 
 | PartID_1    | OEMcond          | 1a379cd37      |
 | PartID_1    | Mevotech | e7ffc5be7      |
 | PartID_2    | OEMcond          | 4a9efa64f      |
-| PartID_2    | MAS | 313b64e58      |
 | PartID_2    | MOOG | 21ea446a4      |
-| PartID_2    | OEMcond          | 4a9efa64f      |
 | PartID_2    | Mevotech | c04c54e6a      |
 | PartID_2    | Dorman | dba70e8e7      |
 | PartID_3    | OEMcond          | 40236b986      |
@@ -57,15 +55,8 @@ Here's a snapshot of the raw data. I plan to restructure it by creating columns 
 | PartID_3    | MOOG | 189942055      |
 | PartID_3    | OEMcond          | f4f124f70      |
 | PartID_3    | OEMcond          | 40236b986      |
-| PartID_3    | OEMcond          | 891efb4c6      |
-| PartID_3    | OEMcond          | dba70e8e7      |
 | PartID_3    | Mevotech | 011f238fe      |
-| PartID_3    | OEMcond          | cd658b895      |
-| PartID_3    | OEMcond          | 6591b474a      |
-| PartID_3    | OEMcond          | 694cfcbfd      |
-| PartID_3    | Dorman | 714ba50e4      |
 
----
 
 | CompanyPart# | Moog | Mevotech | Mevotech | Mas | OEMcond                                       |
 |--------------|------------------|-------------------|------------------|------------------|----------------------------------------------|
