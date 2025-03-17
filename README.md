@@ -36,15 +36,47 @@ The provided dataset consists of three primary columns: `CrossName`, `CrossingNu
 
 ### Transformation
 
-| CrossName        | CrossingNumber                                                | CompanyPart# |
-|------------------|--------------------------------------------------------------|--------------|
-| CrossbrandType_1 | 1a399853c67162cbce50d1b6ed1878ca0271e6af813e4aa832cd1c4986c96acb | PartID_1     |
-| CrossbrandType_1 | e75eff849dd8ebb894a773634d8f3b9a2cedcce27df09eeed75a868c2265b256 | PartID_1     |
-| CrossbrandType_11| 399084d8f947b8b2358fac366dc666ff38b6687ebd647c8458ca4c1df3f7a941 | PartID_1     |
-| CrossbrandType_1 | 1a379cd377f7e946f9773281950f9018883ed51f156c493a5f8ee93fd21af4da | PartID_1     |
-| CrossbrandType_1 | 4a63622c3655ec284482d12ee2aa747540620814a9d01d6847c81450a5782645 | PartID_1     |
-| CrossbrandType_1 | ca65b19218527c70680da0b8825c34494b162c709391c96f5aacc9416edecd23 | PartID_1     |
+Take a glimpse at the raw data snapshot.
 
-
+| CompanyPart# | CrossName         | CrossingNumber |
+|-------------|------------------|----------------|
+| PartID_1    | OEMcond          | 1a399853c      |
+| PartID_1    | OEMcond          | e75eff849      |
+| PartID_1    | CrossbrandType_11 | 399084d8f      |
+| PartID_1    | OEMcond          | 1a379cd37      |
+| PartID_1    | OEMcond          | 4a63622c3      |
+| PartID_1    | OEMcond          | 1a399853c      |
+| PartID_1    | OEMcond          | ca65b1921      |
+| PartID_1    | OEMcond          | c0c572051      |
+| PartID_1    | OEMcond          | e75eff849      |
+| PartID_1    | CrossbrandType_14 | e7ffc5be7      |
+| PartID_1    | OEMcond          | 73b32d5a8      |
+| PartID_2    | OEMcond          | 4a9efa64f      |
+| PartID_2    | CrossbrandType_2  | 313b64e58      |
+| PartID_2    | CrossbrandType_11 | 21ea446a4      |
+| PartID_2    | OEMcond          | 9535ddf65      |
+| PartID_2    | OEMcond          | aad951cac      |
+| PartID_2    | OEMcond          | 4a9efa64f      |
+| PartID_2    | OEMcond          | 714ba50e4      |
+| PartID_2    | OEMcond          | c9ab5492c      |
+| PartID_2    | OEMcond          | e733a8698      |
+| PartID_2    | CrossbrandType_14 | c04c54e6a      |
+| PartID_2    | OEMcond          | dbc852d44      |
+| PartID_2    | OEMcond          | 83efa47d3      |
+| PartID_2    | OEMcond          | e55c262cc      |
+| PartID_2    | CrossbrandType_38 | dba70e8e7      |
+| PartID_3    | OEMcond          | 40236b986      |
+| PartID_3    | CrossbrandType_2  | fc6a76133      |
+| PartID_3    | CrossbrandType_5  | 6e50b8a21      |
+| PartID_3    | CrossbrandType_11 | 189942055      |
+| PartID_3    | OEMcond          | f4f124f70      |
+| PartID_3    | OEMcond          | 40236b986      |
+| PartID_3    | OEMcond          | 891efb4c6      |
+| PartID_3    | OEMcond          | dba70e8e7      |
+| PartID_3    | CrossbrandType_14 | 011f238fe      |
+| PartID_3    | OEMcond          | cd658b895      |
+| PartID_3    | OEMcond          | 6591b474a      |
+| PartID_3    | OEMcond          | 694cfcbfd      |
+| PartID_3    | CrossbrandType_38 | 714ba50e4      |
 
 
